@@ -4,6 +4,7 @@ import os
 import os.path as op
 import slugid
 import sys
+import shutil
 
 CONTAINER_PREFIX = "higlass-manage-container"
 NETWORK_PREFIX = "higlass-manage-network"
@@ -213,7 +214,7 @@ def import_file(
                 print("Removing existing file in temporary dir:", to_import_path)
                 os.remove(to_import_path)
 
-            os.link(filepath, to_import_path)
+            shutil.copy2(filepath, to_import_path)
     else:
         filename = filepath
 
